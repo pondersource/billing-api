@@ -2,7 +2,7 @@
     "name": "ishifoev/heroku-api",
     "autoload": {
         "psr-4": {
-            "Ishifoev\\HerokuApi\\": "src/"
+            "PonderSource\\HerokuApi\\": "src/Heroku/"
         }
     },
     "authors": [

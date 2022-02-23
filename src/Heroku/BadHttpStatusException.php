@@ -1,6 +1,6 @@
 <?php
 
-namespace Ishifoev\HerokuApi;
+namespace PonderSource\HerokuApi;
 
 class BadHttpStatusException {
 

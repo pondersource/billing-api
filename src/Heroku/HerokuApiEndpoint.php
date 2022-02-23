@@ -5,6 +5,8 @@ namespace PonderSource\HerokuApi;
 use PonderSource\HerokuApi\HerokuAccount;
 use PonderSource\HerokuApi\HerokuInvoice;
 use PonderSource\HerokuApi\HerokuInvoiceAddress;
+use PonderSource\HerokuApi\HerokuTeamInvoice;
+
 
 class HerokuApiEndpoint {
     public function getUrlAccount($url) {
@@ -29,7 +31,11 @@ class HerokuApiEndpoint {
                 $herokuInvoiceAddress->getHerokuInvoiceAddress();
                 return $herokuInvoiceAddress;
                 break;
-                  
+             case "/heroku/teams/pondersource/invoices":
+                $herokuTeamInvoices = new HerokuTeamInvoice();
+                $herokuTeamInvoices->getHerokuTeamInvoice();
+                return $herokuTeamInvoices;
+                break;
         }
     }
 }

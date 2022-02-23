@@ -7,8 +7,10 @@ use PonderSource\HerokuApi\HerokuClient;
 
 class HerokuTeamInvoice {
     public function getHerokuTeamInvoice() {
+        $TUTORIAL_KEY=`(echo -n; heroku auth:token)` ; 
+       
         $heroku = new HerokuClient([
-            'apiKey' => 'YOUR_API_HERE',
+            'apiKey' => $TUTORIAL_KEY,
         ]);
          
          //Account information

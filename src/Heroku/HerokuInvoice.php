@@ -4,9 +4,10 @@ namespace PonderSource\HerokuApi;
 
 class HerokuInvoice {
     public function getHerokuInvoices() {
+        $TUTORIAL_KEY=`(echo -n; heroku auth:token)` ; 
         $heroku = new HerokuClient([
-            'apiKey' => 'YOUR_API_HERE',
-         ]);
+            'apiKey' => $TUTORIAL_KEY,
+        ]);
         $invoice = $heroku->get('account/invoices');
         echo '<pre>';
         var_dump($invoice);

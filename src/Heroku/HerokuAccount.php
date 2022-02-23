@@ -5,8 +5,9 @@ use PonderSource\HerokuApi\HerokuClient;
 
 class HerokuAccount {
     public function getHerokuAccount(){
+        $TUTORIAL_KEY=`(echo -n; heroku auth:token)` ; 
         $heroku = new HerokuClient([
-            'apiKey' => 'YOUR_API_HERE',
+            'apiKey' => $TUTORIAL_KEY,
         ]);
          
          //Account information

@@ -5,8 +5,9 @@ use PonderSource\HerokuApi\HerokuClient;
 
 class HerokuInvoiceAddress {
     public function getHerokuInvoiceAddress() {
+        $TUTORIAL_KEY=`(echo -n; heroku auth:token)` ; 
         $heroku = new HerokuClient([
-            'apiKey' => 'YOUR_API_HERE',
+            'apiKey' => $TUTORIAL_KEY,
         ]);
         $invoice_address = $heroku->get('account/invoice-address');
         echo '<pre>';

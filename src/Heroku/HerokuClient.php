@@ -1,12 +1,12 @@
 <?php
 
-namespace Ishifoev\HerokuApi;
+namespace PonderSource\HerokuApi;
 
 use GuzzleHttp\Psr7\Request;
-use Ishifoev\HerokuApi\BadHttpStatusException;
-use Ishifoev\HerokuApi\JsonDecodingException;
-use Ishifoev\HerokuApi\JsonEncodingException;
-use Ishifoev\HerokuApi\MissingApiKeyException;
+use PonderSource\HerokuApi\BadHttpStatusException;
+use PonderSource\HerokuApi\JsonDecodingException;
+use PonderSource\HerokuApi\JsonEncodingException;
+use PonderSource\HerokuApi\MissingApiKeyException;
 use Http\Client\Curl\Client as CurlHttpClient;
 use Http\Client\HttpClient;
 use Http\Factory\Guzzle\ResponseFactory;

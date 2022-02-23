@@ -1,1 +1,5 @@
 /vendor/
+account.json
+invoice.json
+invoice_address.json
+team_invoices.json

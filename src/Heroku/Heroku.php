@@ -1,24 +1,20 @@
 <?php
 
 namespace PonderSource\HerokuApi;
-
 use PonderSource\HerokuApi\HerokuClient;
 
-
-class HerokuTeamInvoice {
-    public function getHerokuTeamInvoice() {
+class Heroku {
+    public function getHeroku($url, $fileName){
         $TUTORIAL_KEY=`(echo -n; heroku auth:token)` ; 
-       
         $heroku = new HerokuClient([
             'apiKey' => $TUTORIAL_KEY,
         ]);
          
          //Account information
-         $team_invoices = $heroku->get('teams/a2516ec8-8e5e-48ae-b0cc-2051aab43893/invoices');
+         $account = $heroku->get($url);
          echo '<pre>';
-         var_dump($team_invoices);
+         var_dump($account);
          echo '</pre>';      
-         file_put_contents("heroku_team_invoices.json", json_encode($team_invoices, JSON_PRETTY_PRINT)); 
-       
+         file_put_contents($fileName, json_encode($account, JSON_PRETTY_PRINT));   
     }
 }

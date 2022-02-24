@@ -13,7 +13,7 @@ class HerokuInvoiceAddress {
         echo '<pre>';
         var_dump($invoice_address);
         echo '</pre>';
-        file_put_contents("invoice_address.json", json_encode($invoice_address, JSON_PRETTY_PRINT));
+        file_put_contents("heroku_invoice_address.json", json_encode($invoice_address, JSON_PRETTY_PRINT));
 
     }
 }

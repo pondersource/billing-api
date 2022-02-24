@@ -12,6 +12,6 @@ class HerokuInvoice {
         echo '<pre>';
         var_dump($invoice);
         echo '</pre>';
-        file_put_contents("invoice.json", json_encode($invoice, JSON_PRETTY_PRINT));
+        file_put_contents("heroku_invoice.json", json_encode($invoice, JSON_PRETTY_PRINT));
     }
 }

@@ -6,6 +6,8 @@ use PonderSource\HerokuApi\HerokuAccount;
 use PonderSource\HerokuApi\HerokuInvoice;
 use PonderSource\HerokuApi\HerokuInvoiceAddress;
 use PonderSource\HerokuApi\HerokuTeamInvoice;
+use PonderSource\HerokuApi\HerokuTeams;
+use PonderSource\HerokuApi\HerokuAddons;
 
 
 class HerokuApiEndpoint {
@@ -31,6 +33,17 @@ class HerokuApiEndpoint {
                 $herokuInvoiceAddress->getHerokuInvoiceAddress();
                 return $herokuInvoiceAddress;
                 break;
+            case "/heroku/teams":
+                $herokuTeams = new HerokuTeams();
+                $herokuTeams->getHerokuTeams();
+                return $herokuTeams;
+                break;
+            case "/heroku/teams/pondersource/addons":
+                $herokuAddons = new HerokuAddons();
+                $herokuAddons->getHerokuAddons();
+                return $herokuAddons;
+                break;
+                
              case "/heroku/teams/pondersource/invoices":
                 $herokuTeamInvoices = new HerokuTeamInvoice();
                 $herokuTeamInvoices->getHerokuTeamInvoice();

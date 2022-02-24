@@ -1,20 +1,19 @@
 <?php
 
 namespace PonderSource\HerokuApi;
-use PonderSource\HerokuApi\HerokuClient;
 
-class HerokuAccount {
-    public function getHerokuAccount(){
+class HerokuAddons {
+    public function getHerokuAddons() {
         $TUTORIAL_KEY=`(echo -n; heroku auth:token)` ; 
         $heroku = new HerokuClient([
             'apiKey' => $TUTORIAL_KEY,
         ]);
          
          //Account information
-         $account = $heroku->get('account');
+         $addons = $heroku->get('teams/a2516ec8-8e5e-48ae-b0cc-2051aab43893/addons');
          echo '<pre>';
-         var_dump($account);
+         var_dump($addons);
          echo '</pre>';      
-         file_put_contents("heroku_account.json", json_encode($account, JSON_PRETTY_PRINT));   
+         file_put_contents("heroku_addons.json", json_encode($addons, JSON_PRETTY_PRINT));
     }
 }

@@ -8,6 +8,7 @@ class Heroku {
         $TUTORIAL_KEY=`(echo -n; heroku auth:token)` ; 
         $heroku = new HerokuClient([
             'apiKey' => $TUTORIAL_KEY,
+            'baseUrl' => 'https://api.heroku.com/',   // Defaults to https://api.heroku.com/
         ]);
          
          //Account information

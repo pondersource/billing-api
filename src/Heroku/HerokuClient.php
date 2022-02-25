@@ -28,11 +28,7 @@ class HerokuClient {
             $this->$property = $value;
         }
 
-        if(!($this->apiKey)) {
-            throw new MissingApiKeyException(
-                'Heroku client error: Missing API key. An API key should either be provided ' .
-                'at instantiation or available as the HEROKU_API_KEY environmental variable.'
-            );
+        if(!($this->apiKey instanceof MissingApiKeyException)) {
         }
 
          // Configure a default HTTP client if none was provided.
@@ -85,9 +81,7 @@ class HerokuClient {
             $body = json_encode($body);
             // Check for JSON encoding errors.
             if (json_last_error() !== JSON_ERROR_NONE) {
-                throw new JsonEncodingException(
-                    'JSON error while encoding Heroku API request: ' . json_last_error_msg()
-                );
+                if($body instanceof JsonEncodingException){}
             }
         }
 
@@ -112,9 +106,7 @@ class HerokuClient {
 
         // Check for JSON decoding errors.
         if (json_last_error() !== JSON_ERROR_NONE) {
-            throw new JsonDecodingException(
-                'JSON error while decoding Heroku API response: ' . json_last_error_msg()
-            );
+            if($apiResponse instanceof JsonDecodingException) {}
         }
 
         return $apiResponse;

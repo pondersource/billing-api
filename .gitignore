@@ -1,5 +1,8 @@
 /vendor/
-account.json
-invoice.json
-invoice_address.json
-team_invoices.json
+heroku_account.json
+heroku_invoice.json
+heroku_invoice_address.json
+heroku_team_invoices.json
+heroku_teams.json
+heroku_addons.json
+.phpunit.result.cache

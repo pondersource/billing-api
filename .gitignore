@@ -5,3 +5,4 @@ heroku_invoice_address.json
 heroku_team_invoices.json
 heroku_teams.json
 heroku_addons.json
+.phpunit.result.cache

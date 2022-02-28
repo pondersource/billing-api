@@ -6,3 +6,4 @@ heroku_team_invoices.json
 heroku_teams.json
 heroku_addons.json
 .phpunit.result.cache
+service-account-file.json

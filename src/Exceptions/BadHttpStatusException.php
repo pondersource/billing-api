@@ -1,6 +1,6 @@
 <?php
 
-namespace PonderSource\HerokuApi;
+namespace PonderSource;
 
 class BadHttpStatusException {
 

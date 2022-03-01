@@ -3,12 +3,6 @@
 namespace PonderSource\HerokuApi;
 
 use PonderSource\HerokuApi\Heroku;
-use PonderSource\HerokuApi\HerokuInvoice;
-use PonderSource\HerokuApi\HerokuInvoiceAddress;
-use PonderSource\HerokuApi\HerokuTeamInvoice;
-use PonderSource\HerokuApi\HerokuTeams;
-use PonderSource\HerokuApi\HerokuAddons;
-
 
 class HerokuApiEndpoint {
     public function getUrlAccount($url) {

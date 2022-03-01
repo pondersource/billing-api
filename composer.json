@@ -3,7 +3,8 @@
     "autoload": {
         "psr-4": {
             "PonderSource\\HerokuApi\\": "src/Heroku/",
-            "PonderSource\\GoogleApi\\": "src/Google/"
+            "PonderSource\\GoogleApi\\": "src/Google/",
+            "PonderSource\\": "src/"
         }
     },
     "autoload-dev": {

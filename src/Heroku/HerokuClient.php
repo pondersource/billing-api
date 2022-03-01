@@ -3,10 +3,10 @@
 namespace PonderSource\HerokuApi;
 
 use GuzzleHttp\Psr7\Request;
-use PonderSource\HerokuApi\BadHttpStatusException;
-use PonderSource\HerokuApi\JsonDecodingException;
-use PonderSource\HerokuApi\JsonEncodingException;
-use PonderSource\HerokuApi\MissingApiKeyException;
+use PonderSource\BadHttpStatusException;
+use PonderSource\JsonDecodingException;
+use PonderSource\JsonEncodingException;
+use PonderSource\MissingApiKeyException;
 use Http\Client\Curl\Client as CurlHttpClient;
 use Http\Client\HttpClient;
 use Http\Factory\Guzzle\ResponseFactory;

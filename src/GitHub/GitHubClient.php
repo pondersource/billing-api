@@ -13,7 +13,7 @@ class GitHubClient{
 		$headers = [
 		    "User-Agent: Example REST API Client",
 				"Accept: application/vnd.github.v3+json",
-		    "Authorization: token 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"
+		    "Authorization: token TOKEN"
 		];
 
 		$ch = curl_init();

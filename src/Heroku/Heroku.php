@@ -2,12 +2,15 @@
 
 namespace PonderSource\HerokuApi;
 use PonderSource\HerokuApi\HerokuClient;
+use PonderSource\Library\DotEnv;
+(new DotEnv('/var/www/billing-api/' . '/.env'))->load();
 
 class Heroku {
     public function getHeroku($url, $fileName){
-        $TUTORIAL_KEY=`(echo -n; heroku auth:token)` ; 
+      
+        //$TUTORIAL_KEY=`(echo -n; heroku auth:token)` ; 
         $heroku = new HerokuClient([
-            'apiKey' => $TUTORIAL_KEY,
+            'apiKey' => getenv('HEROKU_API_KEY'),
             'baseUrl' => 'https://api.heroku.com/',   // Defaults to https://api.heroku.com/
         ]);
          

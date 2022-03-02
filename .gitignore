@@ -7,3 +7,4 @@ heroku_teams.json
 heroku_addons.json
 .phpunit.result.cache
 service-account-file.json
+.env

@@ -50,7 +50,6 @@ class Google {
         case "/google/skus":
             $result = $catalog->listSkus("services/0069-3716-5463");
             foreach ($result->iterateAllElements() as $listSkus) {
-                //var_dump($listSkus);
                 array_push($myArray, [
                     "sku_name" => $listSkus->getName(),
                     "sku_id" => $listSkus->getSkuId(),

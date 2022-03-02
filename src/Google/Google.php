@@ -35,19 +35,37 @@ class Google {
          
          case "/google/services":
             $response = $catalog->listServices();
-            foreach ($response->iterateAllElements() as $element) {
+            foreach ($response->iterateAllElements() as $services) {
+                    array_push($myArray, [
+                        "service_name" => $services->getName(),
+                        "service_id" => $services->getServiceId(),
+                        "display_name" => $services->getDisplayName(),
+                        "business_entity_name" => $services->getBusinessEntityName()
+                     ]);
+                }
+            echo '<pre>';
+            var_dump($myArray);
+            echo '</pre>';      
+            file_put_contents('google_services.json', json_encode($myArray, JSON_PRETTY_PRINT));
+        case "/google/skus":
+            $result = $catalog->listSkus("services/0069-3716-5463");
+            foreach ($result->iterateAllElements() as $listSkus) {
+                //var_dump($listSkus);
                 array_push($myArray, [
-                   'service_name' => $element->getName(),
-                   'service_id' => $element->getServiceId(),
-                   "display_name" => $element->getDisplayName(),
-                   "business_entity_name" => $element->getBusinessEntityName()
+                    "sku_name" => $listSkus->getName(),
+                    "sku_id" => $listSkus->getSkuId(),
+                    "sku_description" => $listSkus->getDescription(),
+                    "sku_provider_name" => $listSkus->getServiceProviderName(),
+                    "sku_service_name" =>  $listSkus->getCategory()->getServiceDisplayName(),
+                    "sku_resource" => $listSkus->getCategory()->getResourceFamily(),
+                    "sku_group" => $listSkus->getCategory()->getResourceGroup(),
+                    "sku_usage_type" => $listSkus->getCategory()->getUsageType(),
                 ]);
             }
             echo '<pre>';
             var_dump($myArray);
             echo '</pre>';      
-            file_put_contents('google_services.json', json_encode($myArray, JSON_PRETTY_PRINT));
-        
+            file_put_contents('google_skus.json', json_encode($myArray, JSON_PRETTY_PRINT));
        }
     }
    

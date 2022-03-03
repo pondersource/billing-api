@@ -5,7 +5,8 @@
             "PonderSource\\HerokuApi\\": "src/Heroku/",
             "PonderSource\\GoogleApi\\": "src/Google/",
             "PonderSource\\Library\\": "src/Library/",
-            "PonderSource\\": "src/"
+            "PonderSource\\": "src/",
+            "PonderSource\\GitHubApi\\": "src/GitHub"
         }
     },
     "autoload-dev": {

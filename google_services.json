@@ -3410,7 +3410,7 @@
     {
         "service_name": "services\/4767-6EC0-25EB",
         "service_id": "4767-6EC0-25EB",
-        "display_name": "Atos database hotel Atos Database hotel for GCP",
+        "display_name": "Atos database hotel Atos Database hotel on BMS",
         "business_entity_name": "businessEntities\/GCP"
     },
     {

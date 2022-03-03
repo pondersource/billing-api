@@ -8,3 +8,6 @@ heroku_addons.json
 .phpunit.result.cache
 service-account-file.json
 .env
+google_services.json
+google_skus.json
+google_billing_accounts.json

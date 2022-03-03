@@ -6,11 +6,6 @@ use Google\ApiCore\Testing\GeneratedTest;
 use Google\ApiCore\Testing\MockTransport;
 use Google\Cloud\Billing\V1\BillingAccount;
 use Google\Cloud\Billing\V1\CloudBillingClient;
-use Google\Cloud\Billing\V1\ListBillingAccountsResponse;
-use Google\Cloud\Billing\V1\ListProjectBillingInfoResponse;
-use Google\Cloud\Billing\V1\ProjectBillingInfo;
-use Google\Cloud\Iam\V1\Policy;
-use Google\Cloud\Iam\V1\TestIamPermissionsResponse;
 use Google\Rpc\Code;
 
 class GoogleTest extends GeneratedTest

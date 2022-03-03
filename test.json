@@ -1,0 +1,4 @@
+{
+    "id": "not_found",
+    "message": "The requested API endpoint was not found. Are you using the right HTTP verb (i.e. `GET` vs. `POST`), and did you specify your intended version with the `Accept` header?"
+}

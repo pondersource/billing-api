@@ -7,7 +7,16 @@
         "sku_service_name": "Qubole Data Service",
         "sku_resource": "ApplicationServices",
         "sku_group": "Qubole",
-        "sku_usage_type": "OnDemand"
+        "sku_usage_type": "OnDemand",
+        "sku_effective_time": "01:16:19",
+        "sku_usage_unit": "mo",
+        "sku_usage_unit_description": "month",
+        "sku_base_unit": "s",
+        "sku_base_unit_description": "second",
+        "sku_base_unit_conversion_factor": 2674800,
+        "sku_display_quantity": 1,
+        "sku_start_usage_amount": 0,
+        "sku_unit_price": "USD"
     },
     {
         "sku_name": "services\/0069-3716-5463\/skus\/1992-9BAC-A2C0",
@@ -17,7 +26,16 @@
         "sku_service_name": "Qubole Data Service",
         "sku_resource": "ApplicationServices",
         "sku_group": "Qubole",
-        "sku_usage_type": "OnDemand"
+        "sku_usage_type": "OnDemand",
+        "sku_effective_time": "01:16:19",
+        "sku_usage_unit": "h",
+        "sku_usage_unit_description": "hour",
+        "sku_base_unit": "s",
+        "sku_base_unit_description": "second",
+        "sku_base_unit_conversion_factor": 3600,
+        "sku_display_quantity": 1,
+        "sku_start_usage_amount": 0,
+        "sku_unit_price": "USD"
     },
     {
         "sku_name": "services\/0069-3716-5463\/skus\/430A-4B21-3852",
@@ -27,7 +45,16 @@
         "sku_service_name": "Qubole Data Service",
         "sku_resource": "ApplicationServices",
         "sku_group": "Qubole",
-        "sku_usage_type": "OnDemand"
+        "sku_usage_type": "OnDemand",
+        "sku_effective_time": "01:16:19",
+        "sku_usage_unit": "h",
+        "sku_usage_unit_description": "hour",
+        "sku_base_unit": "s",
+        "sku_base_unit_description": "second",
+        "sku_base_unit_conversion_factor": 3600,
+        "sku_display_quantity": 1,
+        "sku_start_usage_amount": 0,
+        "sku_unit_price": "USD"
     },
     {
         "sku_name": "services\/0069-3716-5463\/skus\/71ED-0CFF-B099",
@@ -37,7 +64,16 @@
         "sku_service_name": "Qubole Data Service",
         "sku_resource": "ApplicationServices",
         "sku_group": "Qubole",
-        "sku_usage_type": "OnDemand"
+        "sku_usage_type": "OnDemand",
+        "sku_effective_time": "01:16:19",
+        "sku_usage_unit": "mo",
+        "sku_usage_unit_description": "month",
+        "sku_base_unit": "s",
+        "sku_base_unit_description": "second",
+        "sku_base_unit_conversion_factor": 2674800,
+        "sku_display_quantity": 1,
+        "sku_start_usage_amount": 0,
+        "sku_unit_price": "USD"
     },
     {
         "sku_name": "services\/0069-3716-5463\/skus\/8127-822E-C8F6",
@@ -47,7 +83,16 @@
         "sku_service_name": "Qubole Data Service",
         "sku_resource": "ApplicationServices",
         "sku_group": "Qubole",
-        "sku_usage_type": "OnDemand"
+        "sku_usage_type": "OnDemand",
+        "sku_effective_time": "01:16:19",
+        "sku_usage_unit": "mo",
+        "sku_usage_unit_description": "month",
+        "sku_base_unit": "s",
+        "sku_base_unit_description": "second",
+        "sku_base_unit_conversion_factor": 2674800,
+        "sku_display_quantity": 1,
+        "sku_start_usage_amount": 0,
+        "sku_unit_price": "USD"
     },
     {
         "sku_name": "services\/0069-3716-5463\/skus\/C41F-D592-7A2A",
@@ -57,7 +102,16 @@
         "sku_service_name": "Qubole Data Service",
         "sku_resource": "ApplicationServices",
         "sku_group": "Qubole",
-        "sku_usage_type": "OnDemand"
+        "sku_usage_type": "OnDemand",
+        "sku_effective_time": "01:16:19",
+        "sku_usage_unit": "mo",
+        "sku_usage_unit_description": "month",
+        "sku_base_unit": "s",
+        "sku_base_unit_description": "second",
+        "sku_base_unit_conversion_factor": 2674800,
+        "sku_display_quantity": 1,
+        "sku_start_usage_amount": 0,
+        "sku_unit_price": "USD"
     },
     {
         "sku_name": "services\/0069-3716-5463\/skus\/EC90-9230-B2C6",
@@ -67,6 +121,15 @@
         "sku_service_name": "Qubole Data Service",
         "sku_resource": "ApplicationServices",
         "sku_group": "Qubole",
-        "sku_usage_type": "OnDemand"
+        "sku_usage_type": "OnDemand",
+        "sku_effective_time": "01:16:19",
+        "sku_usage_unit": "mo",
+        "sku_usage_unit_description": "month",
+        "sku_base_unit": "s",
+        "sku_base_unit_description": "second",
+        "sku_base_unit_conversion_factor": 2674800,
+        "sku_display_quantity": 1,
+        "sku_start_usage_amount": 0,
+        "sku_unit_price": "USD"
     }
 ]

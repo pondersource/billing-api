@@ -93,6 +93,15 @@ class Google {
                 "sku_resource" => $listSkus->getCategory()->getResourceFamily(),
                 "sku_group" => $listSkus->getCategory()->getResourceGroup(),
                 "sku_usage_type" => $listSkus->getCategory()->getUsageType(),
+                "sku_effective_time" => gmdate("H:i:s",$listSkus->getPricingInfo()->offsetGet(0)-> getEffectiveTime()->getSeconds()),
+                "sku_usage_unit" => $listSkus->getPricingInfo()->offsetGet(0)->getPricingExpression()->getUsageUnit(),
+                "sku_usage_unit_description" => $listSkus->getPricingInfo()->offsetGet(0)->getPricingExpression()->getUsageUnitDescription(),
+                "sku_base_unit" => $listSkus->getPricingInfo()->offsetGet(0)->getPricingExpression()->getBaseUnit(),
+                "sku_base_unit_description" => $listSkus->getPricingInfo()->offsetGet(0)->getPricingExpression()->getBaseUnitDescription(),
+                "sku_base_unit_conversion_factor" => $listSkus->getPricingInfo()->offsetGet(0)->getPricingExpression()->getBaseUnitConversionFactor(),
+                "sku_display_quantity" => $listSkus->getPricingInfo()->offsetGet(0)->getPricingExpression()->getDisplayQuantity(),
+                "sku_start_usage_amount" => $listSkus->getPricingInfo()->offsetGet(0)->getPricingExpression()->getTieredRates()->offsetGet(0)->getStartUsageAmount(),
+                "sku_unit_price" => $listSkus->getPricingInfo()->offsetGet(0)->getPricingExpression()->getTieredRates()->offsetGet(0)->getUnitPrice()->getCurrencyCode()
             ]);
             }
 

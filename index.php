@@ -6,11 +6,12 @@ use PonderSource\GoogleApi\Google;
 use PonderSource\HerokuApi\HerokuApiEndpoint;
 
 $uri = $_SERVER['REQUEST_URI'];
+var_dump($uri);
 
-//$google = new Google([
-  //  'apiKey' => putenv('GOOGLE_APPLICATION_CREDENTIALS='.realpath("service-account-file.json"))
-//]);
-//var_dump($google->getCloudbillingSkus());
+$google = new Google([
+    'apiKey' => putenv('GOOGLE_APPLICATION_CREDENTIALS='.realpath("service-account-file.json"))
+]);
+$google->getCloudbillingSkus();
 
 $her = new HerokuApiEndpoint;
 $her->getUrlAccount($uri);

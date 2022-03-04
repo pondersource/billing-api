@@ -8,7 +8,7 @@ class HerokuApiEndpoint {
     public function getUrlAccount($url) {
         $heroku= new Heroku;
         switch($url) {
-            case "/heroku/account":
+            case "heroku/account":
                 $heroku->getHeroku('account','heroku_account.json');
                 return $heroku;
                 break;

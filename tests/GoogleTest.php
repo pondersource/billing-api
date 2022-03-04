@@ -6,6 +6,11 @@ use Google\ApiCore\Testing\GeneratedTest;
 use Google\ApiCore\Testing\MockTransport;
 use Google\Cloud\Billing\V1\BillingAccount;
 use Google\Cloud\Billing\V1\CloudBillingClient;
+use Google\Cloud\Billing\V1\CloudCatalogClient;
+use Google\Cloud\Billing\V1\ListServicesResponse;
+use Google\Cloud\Billing\V1\ListSkusResponse;
+use Google\Cloud\Billing\V1\Service;
+use Google\Cloud\Billing\V1\Sku;
 use Google\Rpc\Code;
 
 class GoogleTest extends GeneratedTest
@@ -35,6 +40,17 @@ class GoogleTest extends GeneratedTest
             'credentials' => $this->createCredentials(),
         ];
         return new CloudBillingClient($options);
+    }
+
+     /**
+     * @return CloudCatalogClient
+     */
+    private function createClientCatalog(array $options = [])
+    {
+        $options += [
+            'credentials' => $this->createCredentials(),
+        ];
+        return new CloudCatalogClient($options);
     }
 
    /**
@@ -69,6 +85,76 @@ class GoogleTest extends GeneratedTest
         $this->assertSame('/google.cloud.billing.v1.CloudBilling/GetBillingAccount', $actualFuncCall);
         $actualValue = $actualRequestObject->getName();
         $this->assertProtobufEquals($formattedName, $actualValue);
+        $this->assertTrue($transport->isExhausted());
+    }
+
+      /**
+     * @test
+     */
+    public function listServicesTest()
+    {
+        $transport = $this->createTransport();
+        $client = $this->createClientCatalog([
+            'transport' => $transport,
+        ]);
+        $this->assertTrue($transport->isExhausted());
+        // Mock response
+        $nextPageToken = '';
+        $servicesElement = new Service();
+        $services = [
+            $servicesElement,
+        ];
+        $expectedResponse = new ListServicesResponse();
+        $expectedResponse->setNextPageToken($nextPageToken);
+        $expectedResponse->setServices($services);
+        $transport->addResponse($expectedResponse);
+        $response = $client->listServices();
+        $this->assertEquals($expectedResponse, $response->getPage()->getResponseObject());
+        $resources = iterator_to_array($response->iterateAllElements());
+        $this->assertSame(1, count($resources));
+        $this->assertEquals($expectedResponse->getServices()[0], $resources[0]);
+        $actualRequests = $transport->popReceivedCalls();
+        $this->assertSame(1, count($actualRequests));
+        $actualFuncCall = $actualRequests[0]->getFuncCall();
+        $actualRequestObject = $actualRequests[0]->getRequestObject();
+        $this->assertSame('/google.cloud.billing.v1.CloudCatalog/ListServices', $actualFuncCall);
+        $this->assertTrue($transport->isExhausted());
+    }
+
+     /**
+     * @test
+     */
+    public function listSkusTest()
+    {
+        $transport = $this->createTransport();
+        $client = $this->createClientCatalog([
+            'transport' => $transport,
+        ]);
+        $this->assertTrue($transport->isExhausted());
+        // Mock response
+        $nextPageToken = '';
+        $skusElement = new Sku();
+        $skus = [
+            $skusElement,
+        ];
+        $expectedResponse = new ListSkusResponse();
+        $expectedResponse->setNextPageToken($nextPageToken);
+        $expectedResponse->setSkus($skus);
+        $transport->addResponse($expectedResponse);
+        // Mock request
+        $formattedParent = $client->serviceName('[SERVICE]');
+        $response = $client->listSkus($formattedParent);
+        $this->assertEquals($expectedResponse, $response->getPage()->getResponseObject());
+        $resources = iterator_to_array($response->iterateAllElements());
+        $this->assertSame(1, count($resources));
+        $this->assertEquals($expectedResponse->getSkus()[0], $resources[0]);
+        $actualRequests = $transport->popReceivedCalls();
+        $this->assertSame(1, count($actualRequests));
+        $actualFuncCall = $actualRequests[0]->getFuncCall();
+        $actualRequestObject = $actualRequests[0]->getRequestObject();
+        $this->assertSame('/google.cloud.billing.v1.CloudCatalog/ListSkus', $actualFuncCall);
+        $actualValue = $actualRequestObject->getParent();
+        $this->assertProtobufEquals($formattedParent, $actualValue);
         $this->assertTrue($transport->isExhausted());
     }
 }

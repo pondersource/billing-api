@@ -6,6 +6,7 @@ use PonderSource\GoogleApi\Google;
 use PonderSource\HerokuApi\HerokuApiEndpoint;
 
 $uri = $_SERVER['REQUEST_URI'];
+var_dump($uri);
 
 $google = new Google([
     'apiKey' => putenv('GOOGLE_APPLICATION_CREDENTIALS='.realpath("service-account-file.json"))

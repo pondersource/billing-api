@@ -5,15 +5,26 @@ namespace PonderSource\GoogleApi;
 require 'vendor/autoload.php';
 use Google\Cloud\Billing\V1\CloudBillingClient;
 use Google\Cloud\Billing\V1\CloudCatalogClient;
+use PonderSource\MissingApiKeyException;
 
 class Google {
-    public function getCloudBillingInfo($url) {
-    putenv('GOOGLE_APPLICATION_CREDENTIALS='.realpath("service-account-file.json"));
-    $client = new CloudBillingClient();
-    $catalog = new CloudCatalogClient();
-    $myArray = [];
-    switch($url) {
-        case '/google/billingAccounts':
+    //protected $apiKey;
+    public function __construct(array $config) {
+        foreach($config as $property => $value) {
+            $this->$property = $value;
+        }
+    }
+
+    /**
+     * Lists the billing accounts that the current authenticated user has
+     * Lists the projects associated with a billing account. The current
+     * permission to
+     * [view](https://cloud.google.com/billing/docs/how-to/billing-access).
+     */
+    public function getCloudBillingAccount() {
+        $client = new CloudBillingClient();
+        $myArray = [];
+        try {
             $response = $client->listBillingAccounts();
             foreach ($response->iterateAllElements() as $element) {
                 $result = $client->listProjectBillingInfo($element->getName());
@@ -27,13 +38,24 @@ class Google {
                     ]);
                 }
             }
-            echo '<pre>';
-            var_dump($myArray);
-            echo '</pre>';      
+
             file_put_contents('google_billing_accounts.json', json_encode($myArray, JSON_PRETTY_PRINT));
-        break;
-         
-         case "/google/services":
+            return $myArray;
+
+        } finally {
+             $client->close();
+        }
+        
+    }
+
+    /**
+     * Lists all public cloud services.
+     */
+    public function getCloudBillingServices() {
+    //putenv('GOOGLE_APPLICATION_CREDENTIALS='.realpath("service-account-file.json"));
+            $catalog = new CloudCatalogClient();
+            $myArray = [];
+            try {
             $response = $catalog->listServices();
             foreach ($response->iterateAllElements() as $services) {
                     array_push($myArray, [
@@ -43,29 +65,52 @@ class Google {
                         "business_entity_name" => $services->getBusinessEntityName()
                      ]);
                 }
-            echo '<pre>';
-            var_dump($myArray);
-            echo '</pre>';      
-            file_put_contents('google_services.json', json_encode($myArray, JSON_PRETTY_PRINT));
-        case "/google/skus":
-            $result = $catalog->listSkus("services/0069-3716-5463");
-            foreach ($result->iterateAllElements() as $listSkus) {
-                array_push($myArray, [
-                    "sku_name" => $listSkus->getName(),
-                    "sku_id" => $listSkus->getSkuId(),
-                    "sku_description" => $listSkus->getDescription(),
-                    "sku_provider_name" => $listSkus->getServiceProviderName(),
-                    "sku_service_name" =>  $listSkus->getCategory()->getServiceDisplayName(),
-                    "sku_resource" => $listSkus->getCategory()->getResourceFamily(),
-                    "sku_group" => $listSkus->getCategory()->getResourceGroup(),
-                    "sku_usage_type" => $listSkus->getCategory()->getUsageType(),
-                ]);
+
+                file_put_contents('google_services.json', json_encode($myArray, JSON_PRETTY_PRINT));
+                return $myArray;
+
+            } finally {
+                $catalog->close();
+           }
+           
+       }
+
+       /**
+        * Lists all publicly available SKUs for a given cloud service.
+        */
+       public function getCloudbillingSkus() {
+        $catalog = new CloudCatalogClient();
+        $myArray = [];
+        try {
+        $result = $catalog->listSkus("services/0069-3716-5463");
+        foreach ($result->iterateAllElements() as $listSkus) {
+            array_push($myArray, [
+                "sku_name" => $listSkus->getName(),
+                "sku_id" => $listSkus->getSkuId(),
+                "sku_description" => $listSkus->getDescription(),
+                "sku_provider_name" => $listSkus->getServiceProviderName(),
+                "sku_service_name" =>  $listSkus->getCategory()->getServiceDisplayName(),
+                "sku_resource" => $listSkus->getCategory()->getResourceFamily(),
+                "sku_group" => $listSkus->getCategory()->getResourceGroup(),
+                "sku_usage_type" => $listSkus->getCategory()->getUsageType(),
+                "sku_effective_time" => gmdate("H:i:s",$listSkus->getPricingInfo()->offsetGet(0)-> getEffectiveTime()->getSeconds()),
+                "sku_usage_unit" => $listSkus->getPricingInfo()->offsetGet(0)->getPricingExpression()->getUsageUnit(),
+                "sku_usage_unit_description" => $listSkus->getPricingInfo()->offsetGet(0)->getPricingExpression()->getUsageUnitDescription(),
+                "sku_base_unit" => $listSkus->getPricingInfo()->offsetGet(0)->getPricingExpression()->getBaseUnit(),
+                "sku_base_unit_description" => $listSkus->getPricingInfo()->offsetGet(0)->getPricingExpression()->getBaseUnitDescription(),
+                "sku_base_unit_conversion_factor" => $listSkus->getPricingInfo()->offsetGet(0)->getPricingExpression()->getBaseUnitConversionFactor(),
+                "sku_display_quantity" => $listSkus->getPricingInfo()->offsetGet(0)->getPricingExpression()->getDisplayQuantity(),
+                "sku_start_usage_amount" => $listSkus->getPricingInfo()->offsetGet(0)->getPricingExpression()->getTieredRates()->offsetGet(0)->getStartUsageAmount(),
+                "sku_unit_price" => $listSkus->getPricingInfo()->offsetGet(0)->getPricingExpression()->getTieredRates()->offsetGet(0)->getUnitPrice()->getCurrencyCode()
+            ]);
             }
-            echo '<pre>';
-            var_dump($myArray);
-            echo '</pre>';      
+
             file_put_contents('google_skus.json', json_encode($myArray, JSON_PRETTY_PRINT));
+            return $myArray;
+
+        } finally {
+            $catalog->close();
+       }
        }
     }
    
-}

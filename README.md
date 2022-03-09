@@ -87,8 +87,14 @@ We can ask for billing information for a user or organization
 
 Get shared storage billing for an organization
 
+1) First we have to initialize the GitHub Client
 ```
 $github = new GitHubClient();
+```
+
+2) Now we can choose between the 6 available functions and retrieve billing info(JSON) either for Organization or User.
+
+```
 $github->getOrgSharedStorageBilling("org");
 ```
 
@@ -96,19 +102,56 @@ $github->getOrgSharedStorageBilling("org");
 
 Namespace  `PonderSource\AWSApi`
 
-We are using the [AWS SDK](https://aws.amazon.com/sdk-for-php/). The endpoint we need for that is the `https://ce.us-east-1.amazonaws.com`.
+* PHP library for communication with AWS services: [AWS SDK](https://aws.amazon.com/sdk-for-php/).
+
+* Cost Explorer API endpoint: `https://ce.us-east-1.amazonaws.com`.
 
 ### Credentials
 
- The SDK should detect the credentials from environment variables (via AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY), an AWS credentials INI file in your HOME directory, AWS Identity and Access Management (IAM) instance profile credentials, or credential providers.
+From `~/.aws/credentials.ini` we can retireve the credentials
+
+* AWS_ACCESS_KEY_ID
+
+* AWS_SECRET_ACCESS_KEY
 
 #### Using temporary security credentials with the AWS CLI
 
  aws sts get-session-token --serial-number arn-of-the-mfa-device --token-code code-from-token
 
- #### Example
+### [Root Access Keys VS IAM Access Keys](https://docs.aws.amazon.com/general/latest/gr/root-vs-iam.html)
+
+ * Root access
+   - Allow full access to all resources in the account
+
+ * IAM Access Keys
+   -  Access to AWS services and resources for users in your AWS account
+
+### Example
+
+1) First we have to create the AWS Client
 
 ```
- $aws = new AWSClient();
- $aws->getCostAndUsage($params,'aws_cost_and_usage');
+$aws = new AWSClient([
+    'region'  => 'us-east-1',
+    'version' => 'latest',
+    'credentials' => [
+      'key' => $key,
+      'secret' => $secret
+    ],
+    'endpoint' => 'https://ce.us-east-1.amazonaws.com'
+]);
+
+```
+2) Now we can get Cost and Usage report.(Please note that the User have to enable the Cost Explorer first(It may take some time to ingest the data)
+
+```
+
+$aws->getCostAndUsage([
+'Granularity' => 'DAILY', // REQUIRED
+'Metrics' => ['BlendedCost'], // REQUIRED
+'TimePeriod' => [ // REQUIRED
+		'Start' => '2022-01-03', // REQUIRED
+    'End' => '2022-02-03', // REQUIRED
+	],
+],'aws_cost_and_usage');
 ```

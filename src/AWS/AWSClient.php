@@ -12,26 +12,12 @@ class AWSClient{
 
 	protected $s3;
 
-	public function __construct(){
+	public function __construct(array $config){
 
-		// Get credentials from env
-		// $key = getenv('AWS_ACCESS_KEY_ID');
-		// $secret = getenv('AWS_SECRET_ACCESS_KEY');
+		foreach($config as $property => $value) {
+				$this->$property = $value;
+		}
 
-		$key = 'acces_key';
-		$secret = 'secret_acces_key';
-
-		$credentials = [
-			'key' => $key,
-			'secret' => $secret
-		];
-		var_dump("Get AWS Cost and Usage: ");
-		$config = [
-		    'region'  => 'us-east-1',
-		    'version' => 'latest',
-				'credentials' => $credentials,
-				'endpoint' => 'https://ce.us-east-1.amazonaws.com'
-		];
 		// Create a CostExplorerClient
 		$this->s3 = new CostExplorerClient($config);
 	}

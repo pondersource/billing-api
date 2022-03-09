@@ -3,8 +3,6 @@
 // https://docs.github.com/en/rest/reference/billing
 namespace PonderSource\GitHubApi;
 
-use GitHubEndpoint;
-
 class GitHubClient{
 
 	const BASE_URL = "https://api.github.com";
@@ -55,21 +53,21 @@ class GitHubClient{
 	}
 
 	// https://api.github.com/users/USERNAME/settings/billing/shared-storage
-	public function getOrgSharedStorageBilling($username){
+	public function getUserSharedStorageBilling($username){
 		$url = self::BASE_URL."/users/".$username."/settings/billing/";
 		$shared_storage = $this->callGitHubEndpoint($url."shared-storage");
 		return $shared_storage;
 	}
 
 	// https://api.github.com/users/USERNAME/settings/billing/actions
-	public function getOrgActionsBilling($username){
+	public function getUserActionsBilling($username){
 		$url = self::BASE_URL."/users/".$username."/settings/billing/";
 		$actions = $this->callGitHubEndpoint($url."actions");
 		return $actions;
 	}
 
 	// https://api.github.com/users/USERNAME/settings/billing/packages
-	public function getOrgPackagesBillingInfo($username){
+	public function getUserPackagesBillingInfo($username){
 		$url = self::BASE_URL."/users/".$username."/settings/billing/";
 		$packages = $this->callGitHubEndpoint($url."packages");
 		return $packages;

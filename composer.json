@@ -6,7 +6,8 @@
             "PonderSource\\GoogleApi\\": "src/Google/",
             "PonderSource\\Library\\": "src/Library/",
             "PonderSource\\": "src/",
-            "PonderSource\\GitHubApi\\": "src/GitHub"
+            "PonderSource\\GitHubApi\\": "src/GitHub",
+            "PonderSource\\AWSApi\\": "src/AWS"
         }
     },
     "autoload-dev": {
@@ -35,7 +36,8 @@
         "http-interop/http-factory-guzzle": "^1.0",
         "phpunit/phpunit": "^9.5",
         "google/cloud-billing": "^1.3",
-        "google/cloud-storage": "^1.26"
+        "google/cloud-storage": "^1.26",
+        "aws/aws-sdk-php" : "dev-master"
     },
     "require-dev": {
         "php-http/mock-client": "^1.0",

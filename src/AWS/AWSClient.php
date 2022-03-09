@@ -14,8 +14,6 @@ class AWSClient{
 
 	public function __construct(array $config){
 
-		// Get credentials from env
-
 		foreach($config as $property => $value) {
 				$this->$property = $value;
 		}

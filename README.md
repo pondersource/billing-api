@@ -44,34 +44,27 @@ Recuired Headers to call the GitHub API endpoints:
     "Accept: application/vnd.github.v3+json",
     "Authorization: token TOKEN"
 ```
-We can ask for billing information for a user or organization
 ### Methods
+
+We can ask for billing information either for a user or organization
 
 #### Organization
 
 * getOrgSharedStorageBilling($org)
+  - [Get GitHub Actions billing for an organization](https://docs.github.com/en/rest/reference/billing#get-github-actions-billing-for-an-organization)
 * getOrgActionsBilling($org)
+  - [Get GitHub Packages billing for an organization](https://docs.github.com/en/rest/reference/billing#get-github-packages-billing-for-an-organization)
 * getOrgPackagesBillingInfo($org)
-
-#### GitHub billing API for organizations
-
-* [Get GitHub Actions billing for an organization](https://docs.github.com/en/rest/reference/billing#get-github-actions-billing-for-an-organization)
-* [Get GitHub Packages billing for an organization](https://docs.github.com/en/rest/reference/billing#get-github-packages-billing-for-an-organization)
-* [Get shared storage billing for an organization](https://docs.github.com/en/rest/reference/billing#get-shared-storage-billing-for-an-organization)
-
+  - [Get shared storage billing for an organization](https://docs.github.com/en/rest/reference/billing#get-shared-storage-billing-for-an-organization)
 
 ##### User
 
 * getUserSharedStorageBilling($user)
+  - [Get GitHub Actions billing for a user](https://docs.github.com/en/rest/reference/billing#get-github-actions-billing-for-a-user)
 * getUserActionsBilling($user)
+  - [Get GitHub Packages billing for a user](https://docs.github.com/en/rest/reference/billing#get-github-packages-billing-for-a-user)
 * getUserPackagesBillingInfo($user)
-
-#### GitHub billing API for users
-
-* [Get GitHub Actions billing for a user](https://docs.github.com/en/rest/reference/billing#get-github-actions-billing-for-a-user)
-* [Get GitHub Packages billing for a user](https://docs.github.com/en/rest/reference/billing#get-github-packages-billing-for-a-user)
-* [Get shared storage billing for a user](https://docs.github.com/en/rest/reference/billing#get-shared-storage-billing-for-a-user)
-
+  - [Get shared storage billing for a user](https://docs.github.com/en/rest/reference/billing#get-shared-storage-billing-for-a-user)
 
 #### Example
 
@@ -108,7 +101,7 @@ From `~/.aws/credentials.ini` we can retireve the credentials
 
 #### Using temporary security credentials with the AWS CLI
 
- aws sts get-session-token --serial-number arn-of-the-mfa-device --token-code code-from-token
+ `aws sts get-session-token --serial-number arn-of-the-mfa-device --token-code code-from-token`
 
 ### [Root Access Keys VS IAM Access Keys](https://docs.aws.amazon.com/general/latest/gr/root-vs-iam.html)
 

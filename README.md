@@ -44,16 +44,6 @@ Recuired Headers to call the GitHub API endpoints:
     "Accept: application/vnd.github.v3+json",
     "Authorization: token TOKEN"
 ```
-
-### How to use
-
-From the `billing-api/index.php` we need to create the GitHub Client
-
-```
-$github = new GitHubClient();
-
-```
-
 We can ask for billing information for a user or organization
 ### Methods
 
@@ -85,7 +75,9 @@ We can ask for billing information for a user or organization
 
 #### Example
 
-Get shared storage billing for an organization
+##### Get shared storage billing for an organization
+
+At the `billing-api/index.php` first we need to create the GitHub Client
 
 1) First we have to initialize the GitHub Client
 ```
@@ -128,7 +120,7 @@ From `~/.aws/credentials.ini` we can retireve the credentials
 
 ### Example
 
-1) First we have to create the AWS Client
+1) At the `billing-api/index.php` first we need to create AWS Client
 
 ```
 $aws = new AWSClient([

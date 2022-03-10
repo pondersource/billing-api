@@ -31,13 +31,6 @@ class HerokuApiEndpoint {
              $invoice->state = $res->state;
              $invoice->total = $res->total;
              $invoice->updated_at = $res->updated_at;
-
-             $generateInvoice = new GenerateInvoice();
-             $outputXMLString = $generateInvoice->invoice($invoice);
-
-             $deserializeInvoice = new DeserializeInvoice();
-             $deserialize = $deserializeInvoice->deserializeInvoice($outputXMLString);
-             var_dump($deserialize);
           
              $dom = new \DOMDocument;
              $dom->loadXML($outputXMLString);
@@ -47,6 +40,10 @@ class HerokuApiEndpoint {
          var_dump($account);
          echo '</pre>';      
          file_put_contents("heroku_invoice.json", json_encode($account, JSON_PRETTY_PRINT));   
+    }
+    public function deserializeHerokuInvoice($outputXMLString) {
+        $deserializeInvoice = new DeserializeInvoice();
+        $deserialize = $deserializeInvoice->deserializeInvoice($outputXMLString);
     }
     public function getUrlAccount($url) {
         $heroku= new Heroku;

@@ -83,6 +83,16 @@ $github = new GitHubClient();
 $github->getOrgSharedStorageBilling("org");
 ```
 
+3) Response
+
+```
+{
+ "days_left_in_billing_cycle": 20,
+ "estimated_paid_storage_for_month": 15,
+ "estimated_storage_for_month": 40
+}
+```
+
 # AWS API PHP Client
 
 Namespace  `PonderSource\AWSApi`
@@ -127,7 +137,7 @@ $aws = new AWSClient([
 ]);
 
 ```
-2) Now we can get Cost and Usage report.(Please note that the User have to enable the Cost Explorer first(It may take some time to ingest the data)
+2) Now we can get Cost and Usage report. Please consider, that the User have to enable the Cost Explorer first(It may take some time to ingest the data)
 
 ```
 

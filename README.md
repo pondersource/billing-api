@@ -1,7 +1,3 @@
-### PHP library to get billing information from Heroku, GitHub, AWS, Google.
-
-Implementation in progress.
-
 ## Heroku API PHP Client
 
 ### Requirements

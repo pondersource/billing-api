@@ -35,7 +35,8 @@
         "phpunit/phpunit": "^9.5",
         "google/cloud-billing": "^1.3",
         "google/cloud-storage": "^1.26",
-        "sabre/xml": "^2.2"
+        "sabre/xml": "^2.2",
+        "aws/aws-sdk-php" : "dev-master"
     },
     "require-dev": {
         "php-http/mock-client": "^1.0",

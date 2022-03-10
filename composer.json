@@ -5,6 +5,8 @@
             "PonderSource\\HerokuApi\\": "src/Heroku/",
             "PonderSource\\GoogleApi\\": "src/Google/",
             "PonderSource\\Library\\": "src/Library/",
+            "PonderSource\\GitHub\\": "src/GitHub/",
+            "PonderSource\\AWS\\": "src/AWS/",
             "PonderSource\\": "src/"
         }
     },

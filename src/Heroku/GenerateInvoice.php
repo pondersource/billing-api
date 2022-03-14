@@ -8,7 +8,7 @@ use PonderSource\HerokuApi\Invoices;
 
 class GenerateInvoice
 {
-    public static function invoice(Invoice $invoice)
+    public static function invoice(Invoices $invoice)
     {
         $xmlService = new Service();
 

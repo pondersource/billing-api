@@ -7,9 +7,10 @@ use PonderSource\HerokuApi\Invoice;
 use Sabre\Xml\Service;
 use PonderSource\HerokuApi\GenerateInvoice;
 use PonderSource\HerokuApi\DeserializeInvoice;
+use PonderSource\HerokuApi\Invoices;
 
 class HerokuApiEndpoint {
-    public function getHerokuInvoice(){
+    public function getHerokuInvoiceUBL(){
       
         $TUTORIAL_KEY=`(echo -n; heroku auth:token)` ; 
         $invoice = new Invoice;
@@ -20,30 +21,52 @@ class HerokuApiEndpoint {
          
          //Account information
          $account = $heroku->get('account/invoices');
+         //var_dump($account);
+         $invoiceLines = [];
          foreach($account as $res) {
-             $invoice->charges_total = $res->charges_total;
-             $invoice->created_at = $res->created_at;
-             $invoice->credits_total = $res->credits_total;
-             $invoice->id = $res->id;
-             $invoice->number = $res->number;
-             $invoice->period_start = $res->period_start;
-             $invoice->period_end = $res->period_end;
-             $invoice->state = $res->state;
-             $invoice->total = $res->total;
-             $invoice->updated_at = $res->updated_at;
+
+             $invoiceLines[] = (new  Invoice())
+             ->setId($res->id)
+             ->setChargeTotal($res->charges_total)
+             ->setCreatedAt($res->created_at)
+             ->setPeriodStart($res->period_start)
+             ->setPeriodEnd($res->period_end)
+             ->setNumber($res->number)
+             ->setState($res->state)
+             ->setTotal($res->total)
+             ->setUpdatedAt($res->updated_at)
+             ;
+            
+             $invoice = (new  Invoices())
+             ->setInvoices($invoiceLines);
           
+             $generateInvoice = new GenerateInvoice();
+             $outputXMLString = $generateInvoice->invoice($invoice);
+
              $dom = new \DOMDocument;
              $dom->loadXML($outputXMLString);
-             $dom->save('EN16931Test.xml');
+             $dom->save('heroku_invoice.xml');
          }
-         echo '<pre>';
-         var_dump($account);
-         echo '</pre>';      
-         file_put_contents("heroku_invoice.json", json_encode($account, JSON_PRETTY_PRINT));   
+        return $invoice;
+    }
+
+    public function getHerokuInvoiceJson() {
+        $TUTORIAL_KEY=`(echo -n; heroku auth:token)` ;
+        $heroku = new HerokuClient([
+            'apiKey' => $TUTORIAL_KEY,
+            'baseUrl' => 'https://api.heroku.com/',   // Defaults to https://api.heroku.com/
+        ]);
+         
+         //Account information
+         $account = $heroku->get('account/invoices');
+           
+         file_put_contents("heroku_invoice.json", json_encode($account, JSON_PRETTY_PRINT)); 
+         return $account;  
     }
     public function deserializeHerokuInvoice($outputXMLString) {
         $deserializeInvoice = new DeserializeInvoice();
         $deserialize = $deserializeInvoice->deserializeInvoice($outputXMLString);
+        return $deserialize;
     }
     public function getUrlAccount($url) {
         $heroku= new Heroku;

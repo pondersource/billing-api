@@ -13,7 +13,7 @@ $uri = $_SERVER['REQUEST_URI'];
 //var_dump($google->getCloudbillingSkus());
 
 $her = new HerokuApiEndpoint;
-$her->getHerokuInvoice();
+var_dump($her->getHerokuInvoiceUBL());
 
 $google = new Google([
     'apiKey' => putenv('GOOGLE_APPLICATION_CREDENTIALS='.realpath("service-account-file.json"))

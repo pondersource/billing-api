@@ -112,5 +112,18 @@ class Google {
             $catalog->close();
        }
        }
+
+       public function getCloudbillingSkusUBL() {
+        $catalog = new CloudCatalogClient();
+        $myArray = [];
+        try {
+        $result = $catalog->listSkus("services/0069-3716-5463");
+        foreach ($result->iterateAllElements() as $listSkus) {
+            //serialize ubl invoice
+         } 
+
+        }finally {
+            $catalog->close();
+       }
     }
-   
+}

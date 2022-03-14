@@ -19,9 +19,10 @@ $uri = $_SERVER['REQUEST_URI'];
 //var_dump($google->getCloudbillingSkus());
 
 // GITHUB
-$github = new GitHubClient('TOKEN');
-$user_billing = $github->getUserActionsBilling("Triantafullenia-Doumani");
-//$org_billing = $github->getOrgSharedStorageBilling("testORGbilling");
+$token = getenv('GITHUB_ACCESS_TOKEN');
+$github = new GitHubClient($token);
+//$user_billing = $github->getUserSharedStorageBilling("Triantafullenia-Doumani");
+$org_billing = $github->getOrgSharedStorageBilling("testORGbilling");
 
 // HEROKU
 // $her = new HerokuApiEndpoint;

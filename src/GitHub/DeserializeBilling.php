@@ -26,17 +26,14 @@ class DeserializeBilling
                 // Borrowing a parser from the KeyValue class.
                 $keyValue = \Sabre\Xml\Deserializer\keyValue($reader, 'http://example.org/billings');
 
-                if (isset($keyValue['total_minutes_used'])) {
-                    $billing->total_minutes_used = $keyValue['total_minutes_used'];
+                if (isset($keyValue['days_left_in_billing_cycle'])) {
+                    $billing->days_left_in_billing_cycle = $keyValue['days_left_in_billing_cycle'];
                 }
-                if (isset($keyValue['total_paid_minutes_used'])) {
-                    $billing->total_paid_minutes_used = $keyValue['total_paid_minutes_used'];
+                if (isset($keyValue['estimated_paid_storage_for_month'])) {
+                    $billing->estimated_paid_storage_for_month = $keyValue['estimated_paid_storage_for_month'];
                 }
-                if (isset($keyValue['included_minutes'])) {
-                    $billing->included_minutes = $keyValue['included_minutes'];
-                }
-                if (isset($keyValue['minutes_used_breakdown'])) {
-                    $billing->minutes_used_breakdown = $keyValue['minutes_used_breakdown'];
+                if (isset($keyValue['estimated_storage_for_month'])) {
+                    $billing->estimated_storage_for_month = $keyValue['estimated_storage_for_month'];
                 }
                 return $billing;
             },

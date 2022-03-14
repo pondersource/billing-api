@@ -12,7 +12,7 @@ class GitHubClient{
 	private $token;
 
 	public function __construct($token) {
-			$this->$token = $token;
+			$this->token = $token;
 	}
 
 	public function callGitHubEndpoint($url){
@@ -40,23 +40,29 @@ class GitHubClient{
 	}
 
 	// https://api.github.com/orgs/ORG/settings/billing/shared-storage
+	// Access tokens must have the repo or admin:org scope.
 	public function getOrgSharedStorageBilling($organization){
 		$url = self::BASE_URL."/orgs/".$organization."/settings/billing/";
 		$shared_storage = $this->callGitHubEndpoint($url."shared-storage");
+		$this->getGitHubBilling($shared_storage,'github-billing-storage-organization.xml');
 		return $shared_storage;
 	}
 
 	// https://api.github.com/orgs/ORG/settings/billing/actions
+	// Access tokens must have the repo or admin:org scope.
 	public function getOrgActionsBilling($organization){
 		$url = self::BASE_URL."/orgs/".$organization."/settings/billing/";
 		$actions = $this->callGitHubEndpoint($url."actions");
+		//$this->getGitHubBilling($actions,'github-billing-actions-organization.xml');
 		return $actions;
 	}
 
 	// https://api.github.com/orgs/ORG/settings/billing/packages
+	// Access tokens must have the repo or admin:org scope.
 	public function getOrgPackagesBillingInfo($organization){
 		$url = self::BASE_URL."/orgs/".$organization."/settings/billing/";
 		$packages = $this->callGitHubEndpoint($url."packages");
+		//$this->getGitHubBilling($packages,'github-billing-packages-organization.xml');
 		return $packages;
 	}
 
@@ -64,6 +70,7 @@ class GitHubClient{
 	public function getUserSharedStorageBilling($username){
 		$url = self::BASE_URL."/users/".$username."/settings/billing/";
 		$shared_storage = $this->callGitHubEndpoint($url."shared-storage");
+		$this->getGitHubBilling($shared_storage,'github-billing-storage-user.xml');
 		return $shared_storage;
 	}
 
@@ -71,38 +78,33 @@ class GitHubClient{
 	public function getUserActionsBilling($username){
 		$url = self::BASE_URL."/users/".$username."/settings/billing/";
 		$actions = $this->callGitHubEndpoint($url."actions");
-		$this->getGitHubBilling($actions);
-		//$this->deserializeGitHubBilling(json_encode($actions, JSON_PRETTY_PRINT));
+		//$this->getGitHubBilling($actions,'github-billing-actions-user.xml');
 	}
 
 	// https://api.github.com/users/USERNAME/settings/billing/packages
 	public function getUserPackagesBillingInfo($username){
 		$url = self::BASE_URL."/users/".$username."/settings/billing/";
 		$packages = $this->callGitHubEndpoint($url."packages");
+		//$this->getGitHubBilling($packages,'github-billing-packages-user.xml');
 		return $packages;
 	}
 
 
-	public function getGitHubBilling($response){
-			$billing = new Billing();
-		//	foreach($response as $res) {
-				$billing->total_minutes_used = $response["total_minutes_used"];
-				$billing->total_paid_minutes_used = $response["total_paid_minutes_used"];
-				$billing->included_minutes = $response["included_minutes"];
-				$billing->minutes_used_breakdown = $response["minutes_used_breakdown"];
+	public function getGitHubBilling($response,$outputXMLFilename){
+		$billing = new Billing();
+		var_dump($response);
+		$billing->days_left_in_billing_cycle = $response["days_left_in_billing_cycle"];
+		$billing->estimated_paid_storage_for_month = $response["estimated_paid_storage_for_month"];
+		$billing->estimated_storage_for_month = $response["estimated_storage_for_month"];
 
-				//var_dump($billing);
-			//	var_dump($res);
-				$generateBilling = new GenerateBilling();
-				$outputXMLString = $generateBilling->billing($billing);
+		$generateBilling = new GenerateBilling();
+		$outputXMLString = $generateBilling->billing($billing);
 
-				$dom = new \DOMDocument;
-				$dom->loadXML($outputXMLString);
-				$dom->save('./api_responses/github_billing.xml');
+		$dom = new \DOMDocument;
+		$dom->loadXML($outputXMLString);
+		$dom->save('./api_responses/'.$outputXMLFilename);
 
-				//file_put_contents('github_billing.json', json_encode($response, JSON_PRETTY_PRINT));
-		//	}
-			return $billing;
+		return $billing;
 	}
 	public function deserializeGitHubBilling($outputXMLString) {
 			$deserializeBilling = new DeserializeBilling();

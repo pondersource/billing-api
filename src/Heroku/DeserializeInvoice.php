@@ -17,7 +17,7 @@ class DeserializeInvoice
                 $children = $reader->parseInnerTree();
                 foreach($children as $child) {
                     if ($child['value'] instanceof Invoices) {
-                        $books->books[] = $child['value'];
+                        $invoices->invoices[] = $child['value'];
                     }
                 }
                 return $invoices;

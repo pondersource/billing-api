@@ -3,8 +3,8 @@
 // https://docs.github.com/en/rest/reference/billing
 namespace PonderSource\GitHubApi;
 
-use PonderSource\GitHubApi\Invoice;
-use PonderSource\GitHubApi\GenerateInvoice;
+use PonderSource\GitHubApi\Billing;
+use PonderSource\GitHubApi\GenerateBilling;
 
 class GitHubClient{
 
@@ -71,8 +71,8 @@ class GitHubClient{
 	public function getUserActionsBilling($username){
 		$url = self::BASE_URL."/users/".$username."/settings/billing/";
 		$actions = $this->callGitHubEndpoint($url."actions");
-		$this->getGitHubInvoice($actions,'github_invoice.json');
-		//$this->deserializeGitHubInvoice(json_encode($actions, JSON_PRETTY_PRINT));
+		$this->getGitHubBilling($actions,'github_billing.json');
+		//$this->deserializeGitHubBilling(json_encode($actions, JSON_PRETTY_PRINT));
 	}
 
 	// https://api.github.com/users/USERNAME/settings/billing/packages
@@ -83,18 +83,18 @@ class GitHubClient{
 	}
 
 
-	public function getGitHubInvoice($response,$JSONfilename){
-			$invoice = new Invoice();
+	public function getGitHubBilling($response,$JSONfilename){
+			$billing = new Billing();
 		//	foreach($response as $res) {
-				$invoice->total_minutes_used = $response["total_minutes_used"];
-				$invoice->total_paid_minutes_used = $response["total_paid_minutes_used"];
-				$invoice->included_minutes = $response["included_minutes"];
-				$invoice->minutes_used_breakdown = $response["minutes_used_breakdown"];
+				$billing->total_minutes_used = $response["total_minutes_used"];
+				$billing->total_paid_minutes_used = $response["total_paid_minutes_used"];
+				$billing->included_minutes = $response["included_minutes"];
+				$billing->minutes_used_breakdown = $response["minutes_used_breakdown"];
 
-				//var_dump($invoice);
+				//var_dump($billing);
 			//	var_dump($res);
-				$generateInvoice = new GenerateInvoice();
-				$outputXMLString = $generateInvoice->invoice($invoice);
+				$generateBilling = new GenerateBilling();
+				$outputXMLString = $generateBilling->billing($billing);
 
 				$dom = new \DOMDocument;
 				$dom->loadXML($outputXMLString);
@@ -102,11 +102,11 @@ class GitHubClient{
 
 				file_put_contents($JSONfilename, json_encode($response, JSON_PRETTY_PRINT));
 		//	}
-			return $invoice;
+			return $billing;
 	}
-	public function deserializeGitHubInvoice($outputXMLString) {
-			$deserializeInvoice = new DeserializeInvoice();
-			$deserialize = $deserializeInvoice->deserializeInvoice($outputXMLString);
+	public function deserializeGitHubBilling($outputXMLString) {
+			$deserializeBilling = new DeserializeBilling();
+			$deserialize = $deserializeBilling->deserializeBilling($outputXMLString);
 	}
 }
 ?>

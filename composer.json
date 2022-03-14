@@ -7,7 +7,6 @@
             "PonderSource\\Library\\": "src/Library/",
             "PonderSource\\GitHubApi\\": "src/GitHub/",
             "PonderSource\\AWSApi\\": "src/AWS/",
-            "PonderSource\\InvoiceResponse\\": "src/Invoice/",
             "PonderSource\\": "src/"
         }
     },

@@ -8,12 +8,12 @@ use PonderSource\InvoiceResponse\Invoices;
 
 class GenerateInvoice
 {
-    public static function invoice(Invoice $invoice)
+    public static function billing(Invoice $billing)
     {
         $xmlService = new Service();
 
-        return $xmlService->write('{http://example.org/invoices}invoice', [
-            $invoice
+        return $xmlService->write('{http://example.org/billings}billing', [
+            $billing
         ]);
     }
 }

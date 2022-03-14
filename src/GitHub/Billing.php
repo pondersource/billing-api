@@ -5,14 +5,14 @@ namespace PonderSource\GitHubApi;
 use Sabre\Xml\XmlSerializable;
 use Sabre\Xml\Writer;
 
-class Invoice implements XmlSerializable {
+class Billing implements XmlSerializable {
     public $total_minutes_used;
     public $total_paid_minutes_used;
     public $included_minutes;
     public $minutes_used_breakdown;
 
     function xmlSerialize(Writer $writer) {
-        $ns = '{http://example.org/invoices}';
+        $ns = '{http://example.org/billings}';
 
         $writer->write([
             $ns . 'total_minutes_used' => $this->total_minutes_used,

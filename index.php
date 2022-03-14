@@ -24,29 +24,29 @@ $user_billing = $github->getUserActionsBilling("Triantafullenia-Doumani");
 //$org_billing = $github->getOrgSharedStorageBilling("testORGbilling");
 
 // HEROKU
-$her = new HerokuApiEndpoint;
-var_dump($her->getHerokuInvoiceUBL());
-
-// AWS
-$key = getenv('AWS_ACCESS_KEY_ID');
-$secret = getenv('AWS_SECRET_ACCESS_KEY');
-
-$aws = new AWSClient([
-    'region'  => 'us-east-1',
-    'version' => 'latest',
-    'credentials' => [
-      'key' => $key,
-      'secret' => $secret
-    ],
-    'endpoint' => 'https://ce.us-east-1.amazonaws.com'
-]);
-$aws->getCostAndUsage([
-'Granularity' => 'DAILY', // REQUIRED
-'Metrics' => ['BlendedCost'], // REQUIRED
-'TimePeriod' => [ // REQUIRED
-		'Start' => '2022-01-03', // REQUIRED
-    'End' => '2022-02-03', // REQUIRED
-	],
-],'aws_cost_and_usage');
+// $her = new HerokuApiEndpoint;
+// var_dump($her->getHerokuInvoiceUBL());
+//
+// // AWS
+// $key = getenv('AWS_ACCESS_KEY_ID');
+// $secret = getenv('AWS_SECRET_ACCESS_KEY');
+//
+// $aws = new AWSClient([
+//     'region'  => 'us-east-1',
+//     'version' => 'latest',
+//     'credentials' => [
+//       'key' => $key,
+//       'secret' => $secret
+//     ],
+//     'endpoint' => 'https://ce.us-east-1.amazonaws.com'
+// ]);
+// $aws->getCostAndUsage([
+// 'Granularity' => 'DAILY', // REQUIRED
+// 'Metrics' => ['BlendedCost'], // REQUIRED
+// 'TimePeriod' => [ // REQUIRED
+// 		'Start' => '2022-01-03', // REQUIRED
+//     'End' => '2022-02-03', // REQUIRED
+// 	],
+// ],'aws_cost_and_usage');
 
 ?>

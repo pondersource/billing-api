@@ -1,9 +1,9 @@
 <?php
 
-namespace PonderSource\InvoiceResponse;
+namespace PonderSource\GitHubApi;
 
 use Sabre\Xml\Service;
-use PonderSource\InvoiceResponse\Invoice;
+use PonderSource\GitHubApi\Invoice;
 use PonderSource\InvoiceResponse\Invoices;
 
 class GenerateInvoice

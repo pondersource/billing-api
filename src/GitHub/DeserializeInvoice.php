@@ -3,7 +3,7 @@
 namespace PonderSource\GitHubApi;
 
 use Sabre\Xml\Service;
-use PonderSource\InvoiceResponse\Invoice;
+use PonderSource\GitHubApi\Invoice;
 use PonderSource\InvoiceResponse\Invoices;
 
 class DeserializeInvoice
@@ -16,7 +16,7 @@ class DeserializeInvoice
                 $children = $reader->parseInnerTree();
                 foreach($children as $child) {
                     if ($child['value'] instanceof Invoices) {
-                        $books->books[] = $child['value'];
+                        $invoices->invoices[] = $child['value'];
                     }
                 }
                 return $invoices;

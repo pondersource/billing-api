@@ -71,7 +71,7 @@ class GitHubClient{
 	public function getUserActionsBilling($username){
 		$url = self::BASE_URL."/users/".$username."/settings/billing/";
 		$actions = $this->callGitHubEndpoint($url."actions");
-		$this->getGitHubBilling($actions,'github_billing.json');
+		$this->getGitHubBilling($actions);
 		//$this->deserializeGitHubBilling(json_encode($actions, JSON_PRETTY_PRINT));
 	}
 
@@ -83,7 +83,7 @@ class GitHubClient{
 	}
 
 
-	public function getGitHubBilling($response,$JSONfilename){
+	public function getGitHubBilling($response){
 			$billing = new Billing();
 		//	foreach($response as $res) {
 				$billing->total_minutes_used = $response["total_minutes_used"];
@@ -98,9 +98,9 @@ class GitHubClient{
 
 				$dom = new \DOMDocument;
 				$dom->loadXML($outputXMLString);
-				$dom->save('./examples/github_billing.xml');
+				$dom->save('./api_responses/github_billing.xml');
 
-				file_put_contents($JSONfilename, json_encode($response, JSON_PRETTY_PRINT));
+				//file_put_contents('github_billing.json', json_encode($response, JSON_PRETTY_PRINT));
 		//	}
 			return $billing;
 	}

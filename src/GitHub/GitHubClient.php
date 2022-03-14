@@ -98,7 +98,7 @@ class GitHubClient{
 
 				$dom = new \DOMDocument;
 				$dom->loadXML($outputXMLString);
-				$dom->save('github_billing.xml');
+				$dom->save('./examples/github_billing.xml');
 
 				file_put_contents($JSONfilename, json_encode($response, JSON_PRETTY_PRINT));
 		//	}

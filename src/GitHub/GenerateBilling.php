@@ -3,12 +3,11 @@
 namespace PonderSource\GitHubApi;
 
 use Sabre\Xml\Service;
-use PonderSource\GitHubApi\Invoice;
-use PonderSource\InvoiceResponse\Invoices;
+use PonderSource\GitHubApi\Billing;
 
-class GenerateInvoice
+class GenerateBilling
 {
-    public static function billing(Invoice $billing)
+    public static function billing(Billing $billing)
     {
         $xmlService = new Service();
 

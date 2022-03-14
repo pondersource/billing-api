@@ -4,7 +4,7 @@ namespace PonderSource\GitHubApi;
 
 use Sabre\Xml\Service;
 use PonderSource\GitHubApi\Billing;
-use PonderSource\BillingResponse\Billings;
+use PonderSource\GitHubApi\Billings;
 
 class DeserializeBilling
 {

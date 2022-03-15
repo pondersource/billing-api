@@ -92,7 +92,7 @@ class HerokuApiEndpoint {
             $dom->loadXML($outputXMLString);
             $dom->save('heroku_invoice_team.xml');
         }
-            
+        file_put_contents("heroku_team_invoices.json", json_encode($team_invoices, JSON_PRETTY_PRINT));
         return $team_invoices;
        
     }

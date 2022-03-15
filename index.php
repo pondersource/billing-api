@@ -24,9 +24,11 @@ $github = new GitHubClient($token);
 //$user_billing = $github->getUserSharedStorageBilling("Triantafullenia-Doumani");
 $org_billing = $github->getOrgSharedStorageBilling("testORGbilling");
 
-// HEROKU
-// $her = new HerokuApiEndpoint;
-// var_dump($her->getHerokuInvoiceUBL());
+//HEROKU
+$her = new HerokuApiEndpoint;
+//var_dump($her->getUrlAccount($uri));
+var_dump($her->getHerokuInvoice());
+var_dump($her->getHerokuTeamInvoices());
 //
 // // AWS
 // $key = getenv('AWS_ACCESS_KEY_ID');

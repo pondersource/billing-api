@@ -27,7 +27,7 @@ class DeserializeInvoice
                 $invoice = new Invoice();
                 // Borrowing a parser from the KeyValue class.
                 $keyValue = \Sabre\Xml\Deserializer\keyValue($reader, 'http://example.org/invoices');
-        
+
                 if (isset($keyValue['charges_total'])) {
                     $invoice->charges_total = $keyValue['charges_total'];
                 }
@@ -68,9 +68,9 @@ class DeserializeInvoice
                if (isset($keyValue['updated_at'])) {
                    $invoice->updated_at = $keyValue['updated_at'];
                }
-        
+
                 return $invoice;
-        
+
             },
         ];
         return  $service->parse($outputXMLString);

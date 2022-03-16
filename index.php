@@ -10,7 +10,7 @@ use PonderSource\Library\DotEnv;
 
 (new DotEnv(__DIR__ . '/.env'))->load();
 
-$uri = $_SERVER['REQUEST_URI'];
+// $uri = $_SERVER['REQUEST_URI'];
 
 //GOOGLE
 $google = new Google([

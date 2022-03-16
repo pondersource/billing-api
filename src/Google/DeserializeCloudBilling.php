@@ -6,7 +6,7 @@ use Sabre\Xml\Service;
 use PonderSource\GoogleApi\CloudBilling;
 use PonderSource\GoogleApi\CloudBillings;
 
-class DeserializeCloudBilling
+class DeserializeBilling
 {
     public function deserializeInvoice($outputXMLString) {
         $service = new Service();

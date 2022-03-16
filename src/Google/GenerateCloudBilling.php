@@ -3,12 +3,12 @@
 namespace PonderSource\GoogleApi;
 
 use Sabre\Xml\Service;
-use PonderSource\HerokuApi\CloudBilling;
-use PonderSource\HerokuApi\CloudBillings;
+use PonderSource\GoogleApi\CloudBilling;
+use PonderSource\GoogleApi\CloudBillings;
 
 class GenerateCloudBilling
 {
-    public static function billing(CloudBilling $billing)
+    public static function billing(CloudBillings $billing)
     {
         $xmlService = new Service();
 

@@ -7,6 +7,25 @@ A PHP client for the Heroku Platform API working for Invoices, Account, Apps .et
 
 ### Usage
 
+* Checkout this repo
+* Create a .env file in the repo root
+* Comment/uncomment the service for which you want to retrieve invoices (Google, AWS, Github, Heroku).
+* Run `composer install`
+* Go to https://github.com/settings/tokens/new and create a personal access token. Tick 'admin:org' and 'user' as scopes.
+* Uncomment line 24 of src/index.php, and put in your Github username, for instance:
+```
+$user_billing = $github->getUserSharedStorageBilling("michielbdejong");
+```
+* Save this in your `.env` file as:
+```
+GITHUB_ACCESS_TOKEN=ghp_0AwgbEb....
+```
+* Run `php index.php`
+* You will see something like:
+```
+array(3) { ["days_left_in_billing_cycle"]=> int(19) ["estimated_paid_storage_for_month"]=> int(0) ["estimated_storage_for_month"]=> int(0) }
+```
+
 For example you need to get information for get invoice from API heroku you need to use this.
 
 ````php

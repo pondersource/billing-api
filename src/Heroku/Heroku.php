@@ -3,7 +3,7 @@
 namespace PonderSource\HerokuApi;
 use PonderSource\HerokuApi\HerokuClient;
 use PonderSource\Library\DotEnv;
-(new DotEnv('/var/www/billing-api/' . '/.env'))->load();
+// (new DotEnv('/var/www/billing-api/' . '/.env'))->load();
 
 class Heroku {
     public function getHeroku($url, $fileName){

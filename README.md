@@ -25,8 +25,8 @@ $user_billing = $github->getUserSharedStorageBilling("michielbdejong");
 ```
 HEROKU_API_KEY=30a84169-7c38-4b71-a19...
 ```
-* FIXME: `$team_invoices = $heroku->get("teams/a2516ec8-8e5e-48ae-b0cc-2051aab43893/invoices");`
-is hardcoded in HerokuApiEndpoint.php line 65.
+* First, run `var_dump($her->getUrlAccount('/heroku/teams'));` on line 31 of index.php to retrieve your Heroku teams information, then paste the team ID into the line `$team_invoices = $heroku->get("teams/a2516ec8-8e5e-48ae-b0cc-2051aab43893/invoices");`
+which is hardcoded in HerokuApiEndpoint.php line 62.
 * Run `php index.php`
 * You will see something like:
 ```

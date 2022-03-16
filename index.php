@@ -16,7 +16,7 @@ $uri = $_SERVER['REQUEST_URI'];
 $google = new Google([
     'apiKey' => putenv('GOOGLE_APPLICATION_CREDENTIALS='.realpath("service-account-file.json"))
 ]);
-var_dump($google->getCloudbillingSkus());
+//var_dump($google->getCloudbillingSkus());
 
 // GITHUB
 $token = getenv('GITHUB_ACCESS_TOKEN');
@@ -28,7 +28,7 @@ $org_billing = $github->getOrgSharedStorageBilling("testORGbilling");
 $her = new HerokuApiEndpoint;
 //var_dump($her->getUrlAccount($uri));
 //var_dump($her->getHerokuInvoice());
-$her->getHerokuTeamInvoices();
+var_dump($her->getHerokuTeamInvoices());
 //
 // // AWS
 // $key = getenv('AWS_ACCESS_KEY_ID');

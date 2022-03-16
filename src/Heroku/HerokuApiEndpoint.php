@@ -59,7 +59,12 @@ class HerokuApiEndpoint {
             'baseUrl' => 'https://api.heroku.com/',   // Defaults to https://api.heroku.com/
         ]);
 
-        $team_invoices = $heroku->get("teams/a2516ec8-8e5e-48ae-b0cc-2051aab43893/invoices");
+        $teams = $heroku->get('teams');
+        
+        foreach($teams as $team) {
+            $team_invoices = $heroku->get("teams/" .$team->id. "/invoices");
+        }
+       
 
         $invoiceLines = [];
         foreach($team_invoices as $res) {

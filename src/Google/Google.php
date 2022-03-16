@@ -6,6 +6,9 @@ require 'vendor/autoload.php';
 use Google\Cloud\Billing\V1\CloudBillingClient;
 use Google\Cloud\Billing\V1\CloudCatalogClient;
 use PonderSource\MissingApiKeyException;
+use PonderSource\GoogleApi\CloudBilling;
+use PonderSource\GoogleApi\CloudBillings;
+use PonderSource\GoogleApi\GenerateCloudBilling;
 
 class Google {
     //protected $apiKey;
@@ -103,6 +106,39 @@ class Google {
                 "sku_start_usage_amount" => $listSkus->getPricingInfo()->offsetGet(0)->getPricingExpression()->getTieredRates()->offsetGet(0)->getStartUsageAmount(),
                 "sku_unit_price" => $listSkus->getPricingInfo()->offsetGet(0)->getPricingExpression()->getTieredRates()->offsetGet(0)->getUnitPrice()->getCurrencyCode()
             ]);
+            }
+
+            $billingItems = []; 
+            foreach($myArray as $res) {
+                //var_dump($res["sku_name"]);
+                $billingItems[] = (new  CloudBilling())
+                    ->setSkuName($res["sku_name"])
+                    ->setSkuId($res["sku_id"])
+                    ->setSkuDescription($res["sku_description"])
+                    ->setSkuProviderName($res["sku_provider_name"])
+                    ->setSkuServiceName($res["sku_service_name"])
+                    ->setSkuResouce($res["sku_resource"])
+                    ->setSkuGroup($res["sku_group"])
+                    ->setSkuUsageType($res["sku_usage_type"])
+                    ->setSkuEffectiveTime($res["sku_effective_time"])
+                    ->setSkuUsageUnit($res["sku_usage_unit"])
+                    ->setSkuUsageUnitDescription($res["sku_usage_unit_description"])
+                    ->setSkuBaseUnit($res["sku_base_unit"])
+                    ->setSkuBaseUnitDescription($res["sku_base_unit_description"])
+                    ->setSkuBaseUnitConversionDescription($res["sku_base_unit_conversion_factor"])
+                    ->setSkuDisplayQuantity($res["sku_display_quantity"])
+                    ->setSkuStartUsageAmount($res["sku_start_usage_amount"])
+                    ;
+
+                $billing = (new  CloudBillings())
+                ->setBillings($billingItems);
+
+                $generateBilling = new GenerateCloudBilling();
+                $outputXMLString = $generateBilling->billing($billing);
+
+                $dom = new \DOMDocument;
+                $dom->loadXML($outputXMLString);
+                $dom->save('google_billing.xml');
             }
 
             file_put_contents('google_skus.json', json_encode($myArray, JSON_PRETTY_PRINT));

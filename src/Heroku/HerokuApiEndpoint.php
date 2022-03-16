@@ -45,7 +45,7 @@ class HerokuApiEndpoint {
 
              $dom = new \DOMDocument;
              $dom->loadXML($outputXMLString);
-             $dom->save('heroku_invoice.xml');
+             $dom->save('./api_responses/'.'heroku_invoice.xml');
          }
         file_put_contents("heroku_invoice.json", json_encode($account, JSON_PRETTY_PRINT)); 
         return $invoice;
@@ -60,6 +60,7 @@ class HerokuApiEndpoint {
         ]);
 
         $teams = $heroku->get('teams');
+        var_dump($teams);
         
         foreach($teams as $team) {
             $team_invoices = $heroku->get("teams/" .$team->id. "/invoices");
@@ -95,7 +96,7 @@ class HerokuApiEndpoint {
 
             $dom = new \DOMDocument;
             $dom->loadXML($outputXMLString);
-            $dom->save('heroku_invoice_team.xml');
+            $dom->save('./api_responses/'. 'heroku_invoice_team.xml');
         }
         file_put_contents("heroku_team_invoices.json", json_encode($team_invoices, JSON_PRETTY_PRINT));
         return $team_invoices;

@@ -9,7 +9,7 @@
   <x1:sku_resource xmlns:x1="http://example.org/billings">ApplicationServices</x1:sku_resource>
   <x1:sku_group xmlns:x1="http://example.org/billings">Qubole</x1:sku_group>
   <x1:sku_usage_type xmlns:x1="http://example.org/billings">OnDemand</x1:sku_usage_type>
-  <x1:sku_effective_time xmlns:x1="http://example.org/billings">06:36:43</x1:sku_effective_time>
+  <x1:sku_effective_time xmlns:x1="http://example.org/billings">18:42:26</x1:sku_effective_time>
   <x1:sku_usage_unit xmlns:x1="http://example.org/billings">mo</x1:sku_usage_unit>
   <x1:sku_usage_unit_description xmlns:x1="http://example.org/billings">month</x1:sku_usage_unit_description>
   <x1:sku_base_unit xmlns:x1="http://example.org/billings">s</x1:sku_base_unit>
@@ -28,7 +28,7 @@
   <x1:sku_resource xmlns:x1="http://example.org/billings">ApplicationServices</x1:sku_resource>
   <x1:sku_group xmlns:x1="http://example.org/billings">Qubole</x1:sku_group>
   <x1:sku_usage_type xmlns:x1="http://example.org/billings">OnDemand</x1:sku_usage_type>
-  <x1:sku_effective_time xmlns:x1="http://example.org/billings">06:36:43</x1:sku_effective_time>
+  <x1:sku_effective_time xmlns:x1="http://example.org/billings">18:42:26</x1:sku_effective_time>
   <x1:sku_usage_unit xmlns:x1="http://example.org/billings">h</x1:sku_usage_unit>
   <x1:sku_usage_unit_description xmlns:x1="http://example.org/billings">hour</x1:sku_usage_unit_description>
   <x1:sku_base_unit xmlns:x1="http://example.org/billings">s</x1:sku_base_unit>
@@ -47,7 +47,7 @@
   <x1:sku_resource xmlns:x1="http://example.org/billings">ApplicationServices</x1:sku_resource>
   <x1:sku_group xmlns:x1="http://example.org/billings">Qubole</x1:sku_group>
   <x1:sku_usage_type xmlns:x1="http://example.org/billings">OnDemand</x1:sku_usage_type>
-  <x1:sku_effective_time xmlns:x1="http://example.org/billings">06:36:43</x1:sku_effective_time>
+  <x1:sku_effective_time xmlns:x1="http://example.org/billings">18:42:26</x1:sku_effective_time>
   <x1:sku_usage_unit xmlns:x1="http://example.org/billings">h</x1:sku_usage_unit>
   <x1:sku_usage_unit_description xmlns:x1="http://example.org/billings">hour</x1:sku_usage_unit_description>
   <x1:sku_base_unit xmlns:x1="http://example.org/billings">s</x1:sku_base_unit>
@@ -66,7 +66,7 @@
   <x1:sku_resource xmlns:x1="http://example.org/billings">ApplicationServices</x1:sku_resource>
   <x1:sku_group xmlns:x1="http://example.org/billings">Qubole</x1:sku_group>
   <x1:sku_usage_type xmlns:x1="http://example.org/billings">OnDemand</x1:sku_usage_type>
-  <x1:sku_effective_time xmlns:x1="http://example.org/billings">06:36:43</x1:sku_effective_time>
+  <x1:sku_effective_time xmlns:x1="http://example.org/billings">18:42:26</x1:sku_effective_time>
   <x1:sku_usage_unit xmlns:x1="http://example.org/billings">mo</x1:sku_usage_unit>
   <x1:sku_usage_unit_description xmlns:x1="http://example.org/billings">month</x1:sku_usage_unit_description>
   <x1:sku_base_unit xmlns:x1="http://example.org/billings">s</x1:sku_base_unit>
@@ -85,7 +85,7 @@
   <x1:sku_resource xmlns:x1="http://example.org/billings">ApplicationServices</x1:sku_resource>
   <x1:sku_group xmlns:x1="http://example.org/billings">Qubole</x1:sku_group>
   <x1:sku_usage_type xmlns:x1="http://example.org/billings">OnDemand</x1:sku_usage_type>
-  <x1:sku_effective_time xmlns:x1="http://example.org/billings">06:36:43</x1:sku_effective_time>
+  <x1:sku_effective_time xmlns:x1="http://example.org/billings">18:42:26</x1:sku_effective_time>
   <x1:sku_usage_unit xmlns:x1="http://example.org/billings">mo</x1:sku_usage_unit>
   <x1:sku_usage_unit_description xmlns:x1="http://example.org/billings">month</x1:sku_usage_unit_description>
   <x1:sku_base_unit xmlns:x1="http://example.org/billings">s</x1:sku_base_unit>
@@ -104,7 +104,7 @@
   <x1:sku_resource xmlns:x1="http://example.org/billings">ApplicationServices</x1:sku_resource>
   <x1:sku_group xmlns:x1="http://example.org/billings">Qubole</x1:sku_group>
   <x1:sku_usage_type xmlns:x1="http://example.org/billings">OnDemand</x1:sku_usage_type>
-  <x1:sku_effective_time xmlns:x1="http://example.org/billings">06:36:43</x1:sku_effective_time>
+  <x1:sku_effective_time xmlns:x1="http://example.org/billings">18:42:26</x1:sku_effective_time>
   <x1:sku_usage_unit xmlns:x1="http://example.org/billings">mo</x1:sku_usage_unit>
   <x1:sku_usage_unit_description xmlns:x1="http://example.org/billings">month</x1:sku_usage_unit_description>
   <x1:sku_base_unit xmlns:x1="http://example.org/billings">s</x1:sku_base_unit>
@@ -123,7 +123,7 @@
   <x1:sku_resource xmlns:x1="http://example.org/billings">ApplicationServices</x1:sku_resource>
   <x1:sku_group xmlns:x1="http://example.org/billings">Qubole</x1:sku_group>
   <x1:sku_usage_type xmlns:x1="http://example.org/billings">OnDemand</x1:sku_usage_type>
-  <x1:sku_effective_time xmlns:x1="http://example.org/billings">06:36:43</x1:sku_effective_time>
+  <x1:sku_effective_time xmlns:x1="http://example.org/billings">18:42:26</x1:sku_effective_time>
   <x1:sku_usage_unit xmlns:x1="http://example.org/billings">mo</x1:sku_usage_unit>
   <x1:sku_usage_unit_description xmlns:x1="http://example.org/billings">month</x1:sku_usage_unit_description>
   <x1:sku_base_unit xmlns:x1="http://example.org/billings">s</x1:sku_base_unit>

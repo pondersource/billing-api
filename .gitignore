@@ -1,13 +1,5 @@
 /vendor/
-heroku_account.json
-heroku_invoice.json
-heroku_invoice_address.json
-heroku_team_invoices.json
-heroku_teams.json
-heroku_addons.json
 .phpunit.result.cache
 service-account-file.json
 .env
-google_services.json
-google_skus.json
-google_billing_accounts.json
+application_default_credentials.json

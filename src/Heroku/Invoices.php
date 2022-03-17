@@ -26,7 +26,7 @@ class Invoices implements XmlSerializable {
         $ns = '{http://example.org/invoices}';
         foreach ($this->invoices as $invoice) {
             $writer->write([
-                $ns. 'InvoiceItem' => $invoice
+                $ns. 'InvoiceTeamItem' => $invoice
             ]);
         }
     }

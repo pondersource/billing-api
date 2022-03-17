@@ -2,6 +2,12 @@
 
 namespace PonderSource\HerokuApi;
 
+use PonderSource\HerokuApi\Heroku;
+use PonderSource\HerokuApi\Invoice;
+use Sabre\Xml\Service;
+use PonderSource\HerokuApi\GenerateInvoice;
+use PonderSource\HerokuApi\DeserializeInvoice;
+use PonderSource\HerokuApi\Invoices;
 use GuzzleHttp\Psr7\Request;
 use PonderSource\BadHttpStatusException;
 use PonderSource\JsonDecodingException;
@@ -13,7 +19,6 @@ use Http\Factory\Guzzle\ResponseFactory;
 use Http\Factory\Guzzle\StreamFactory;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-
 
 class HerokuClient {
     protected $baseUrl = 'https://api.heroku.com/';
@@ -37,6 +42,97 @@ class HerokuClient {
         }
     }
 
+
+    public function getHerokuInvoice(){
+      
+        //$TUTORIAL_KEY=`(echo -n; heroku auth:token)` ; 
+        $invoice = new Invoice;
+
+         //Account information
+         $account = $this->get('account/invoices');
+         //var_dump($account);
+         $invoiceLines = [];
+         foreach($account as $res) {
+
+             $invoiceLines[] = (new  Invoice())
+             ->setId($res->id)
+             ->setChargeTotal($res->charges_total)
+             ->setCreatedAt($res->created_at)
+             ->setPeriodStart($res->period_start)
+             ->setPeriodEnd($res->period_end)
+             ->setNumber($res->number)
+             ->setState($res->state)
+             ->setTotal($res->total)
+             ->setUpdatedAt($res->updated_at)
+             ;
+            
+             $invoice = (new  Invoices())
+             ->setInvoices($invoiceLines);
+          
+             $generateInvoice = new GenerateInvoice();
+             $outputXMLString = $generateInvoice->invoice($invoice);
+
+             $dom = new \DOMDocument;
+             $dom->loadXML($outputXMLString);
+             $dom->save('./api_responses_xml/'.'heroku_invoice.xml');
+         }
+        file_put_contents("./api_responses_json/heroku_invoice.json", json_encode($account, JSON_PRETTY_PRINT)); 
+        return $invoice;
+    }
+
+    public function getHerokuTeamInvoices() {
+        //$TUTORIAL_KEY=`(echo -n; heroku auth:token)` ; 
+        $invoice = new Invoice;
+        
+
+        $teams = $this->get('teams');
+        //var_dump($teams);
+        $invoiceLines = [];
+        foreach($teams as $team) {
+            $team_invoices = $this->get("teams/" .$team->id. "/invoices");
+        
+        foreach($team_invoices as $res) {
+
+            $invoiceLines[] = (new  Invoice())
+            ->setId($res->id)
+            ->setChargeTotal($res->charges_total)
+            ->setCreatedAt($res->created_at)
+            ->setPeriodStart($res->period_start)
+            ->setPeriodEnd($res->period_end)
+            ->setNumber($res->number)
+            ->setState($res->state)
+            ->setTotal($res->total)
+            ->setUpdatedAt($res->updated_at)
+            ->setAddonsTotal($res->addons_total)
+            ->setDatabaseTotal($res->database_total)
+            ->setDynoUnits($res->dyno_units)
+            ->setPlatformTotal($res->platform_total)
+            ->setPaymentStatus($res->payment_status)
+            ->setWeightedDynoHours($res->weighted_dyno_hours)
+            ;
+           
+            $invoice = (new  Invoices())
+            ->setInvoices($invoiceLines);
+         
+            $generateInvoice = new GenerateInvoice();
+            $outputXMLString = $generateInvoice->invoice($invoice);
+
+            $dom = new \DOMDocument;
+            $dom->loadXML($outputXMLString);
+            $dom->save('./api_responses_xml/'. 'heroku_invoice_team.xml');
+        }
+    }
+        file_put_contents("./api_responses_json/heroku_team_invoices.json", json_encode($team_invoices, JSON_PRETTY_PRINT));
+        return $team_invoices;
+       
+    }
+
+    public function deserializeHerokuInvoice($outputXMLString) {
+        $deserializeInvoice = new DeserializeInvoice();
+        $deserialize = $deserializeInvoice->deserializeInvoice($outputXMLString);
+        return $deserialize;
+    }
+    
     public function get($path, array $headers = [])
     {
         return $this->execute('GET', $path, null, $headers);

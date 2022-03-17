@@ -3,7 +3,7 @@
 require_once __DIR__ . '/vendor/autoload.php';
 
 use PonderSource\GoogleApi\Google;
-use PonderSource\HerokuApi\HerokuApiEndpoint;
+use PonderSource\HerokuApi\HerokuClient;
 use PonderSource\GitHubApi\GitHubClient;
 use PonderSource\AWSApi\AWSClient;
 use PonderSource\Library\DotEnv;
@@ -14,20 +14,23 @@ use PonderSource\Library\DotEnv;
 
 //GOOGLE
 $google = new Google([
-    'apiKey' => putenv('GOOGLE_APPLICATION_CREDENTIALS='.realpath("service-account-file.json"))
+    'apiKey' => putenv('GOOGLE_APPLICATION_CREDENTIALS='.realpath("application_default_credentials.json"))
 ]);
-var_dump($google->getCloudbillingSkus());
+$google->getCloudbillingSkus();
 
 // GITHUB
 $token = getenv('GITHUB_ACCESS_TOKEN');
 $github = new GitHubClient($token);
-//$user_billing = $github->getUserSharedStorageBilling("Triantafullenia-Doumani");
-$org_billing = $github->getOrgSharedStorageBilling("testORGbilling");
+$user_billing = $github->getUserSharedStorageBilling("ishifoev");
+//$org_billing = $github->getOrgSharedStorageBilling("testORGbilling");
 
 //HEROKU
-$her = new HerokuApiEndpoint;
+$her = new HerokuClient([
+    'apiKey' =>  getenv('HEROKU_API_KEY'),
+]);
+ 
 //var_dump($her->getUrlAccount($uri));
-//var_dump($her->getHerokuInvoice());
+$her->getHerokuInvoice();
 $her->getHerokuTeamInvoices();
 //
 // // AWS

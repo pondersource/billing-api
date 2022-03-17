@@ -92,7 +92,6 @@ class GitHubClient{
 
 	public function getGitHubBilling($response,$outputXMLFilename){
 		$billing = new Billing();
-		var_dump($response);
 		$billing->days_left_in_billing_cycle = $response["days_left_in_billing_cycle"];
 		$billing->estimated_paid_storage_for_month = $response["estimated_paid_storage_for_month"];
 		$billing->estimated_storage_for_month = $response["estimated_storage_for_month"];
@@ -102,7 +101,7 @@ class GitHubClient{
 
 		$dom = new \DOMDocument;
 		$dom->loadXML($outputXMLString);
-		$dom->save('./api_responses/'.$outputXMLFilename);
+		$dom->save('./api_responses_xml/'.$outputXMLFilename);
 
 		return $billing;
 	}

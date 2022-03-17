@@ -138,10 +138,10 @@ class Google {
 
                 $dom = new \DOMDocument;
                 $dom->loadXML($outputXMLString);
-                $dom->save('google_billing.xml');
+                $dom->save('./api_responses_xml/'. 'google_billing.xml');
             }
 
-            file_put_contents('google_skus.json', json_encode($myArray, JSON_PRETTY_PRINT));
+            file_put_contents('./api_responses_json/google_skus.json', json_encode($myArray, JSON_PRETTY_PRINT));
             return $myArray;
 
         } finally {

@@ -2,6 +2,7 @@
     "name": "pondersource/billing-api",
     "description": "A Billing API for Heroku, Github, AWS",
     "homepage": "https://github.com/pondersource/billing-api",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "PonderSource\\HerokuApi\\": "src/Heroku/",

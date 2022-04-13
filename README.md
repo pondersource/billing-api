@@ -6,7 +6,7 @@
 A PHP client for the Billing Platform API working for Invoices, Account, Apps .etc
 
 ### Usage
-
+```composer require pondersource/billing-api```
 * Checkout this repo
 * Create a .env file you can do it go to the CLI and run ```cp .env.example .env```
 * Comment/uncomment the service for which you want to retrieve invoices or usage info (Google, AWS, Github, Heroku).

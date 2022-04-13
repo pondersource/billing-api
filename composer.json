@@ -1,5 +1,7 @@
 {
-    "name": "ishifoev/heroku-api",
+    "name": "pondersource/billing-api",
+    "description": "A Billing API for Heroku, Github, AWS",
+    "homepage": "https://github.com/pondersource/billing-api",
     "autoload": {
         "psr-4": {
             "PonderSource\\HerokuApi\\": "src/Heroku/",
@@ -23,8 +25,8 @@
     },
     "authors": [
         {
-            "name": "ishifoev",
-            "email": "alex.malikov94@gmail.com"
+            "name": "Pondersource",
+            "role": "Software Engineer"
         }
     ],
     "require": {

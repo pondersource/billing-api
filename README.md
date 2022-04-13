@@ -34,12 +34,11 @@ HEROKU_API_KEY=30a84169-7c38-4b71-a19...
 ## Heroku API Client
 
 ````php
-use Ishifoev\HerokuApi\HerokuClient;
+use PonderSource\HerokuApi\HerokuClient;
 
-$heroku = new HerokuClient([
-   'apiKey' => getenv('HEROKU_API_KEY'),
+$her = new HerokuClient([
+    'apiKey' =>  getenv('HEROKU_API_KEY'),
 ]);
-$invoice = $heroku->get('account/invoices');
 
 $her->getHerokuInvoice();
 $her->getHerokuTeamInvoices();

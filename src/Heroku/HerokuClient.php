@@ -74,9 +74,9 @@ class HerokuClient {
 
              $dom = new \DOMDocument;
              $dom->loadXML($outputXMLString);
-             $dom->save('./api_responses_xml/'.'heroku_invoice.xml');
+             $dom->save('heroku_invoice.xml');
          }
-        file_put_contents("./api_responses_json/heroku_invoice.json", json_encode($account, JSON_PRETTY_PRINT)); 
+        file_put_contents("heroku_invoice.json", json_encode($account, JSON_PRETTY_PRINT)); 
         return $invoice;
     }
 
@@ -119,10 +119,10 @@ class HerokuClient {
 
             $dom = new \DOMDocument;
             $dom->loadXML($outputXMLString);
-            $dom->save('./api_responses_xml/'. 'heroku_invoice_team.xml');
+            $dom->save('heroku_invoice_team.xml');
         }
     }
-        file_put_contents("./api_responses_json/heroku_team_invoices.json", json_encode($team_invoices, JSON_PRETTY_PRINT));
+        file_put_contents("heroku_team_invoices.json", json_encode($team_invoices, JSON_PRETTY_PRINT));
         return $team_invoices;
        
     }
